@@ -1,0 +1,4 @@
+.build/
+App-booklog2amazon-*.tar.gz
+App-booklog2amazon-*/
+*.BAK
