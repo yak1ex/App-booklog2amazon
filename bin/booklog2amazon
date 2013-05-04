@@ -1,0 +1,46 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+
+# PODNAME: booklog2amazon
+# ABSTRACT: Update amazon recommended according to booklog status
+# VERSION
+
+use App::booklog2amazon;
+
+App::booklog2amazon->run(@ARGV);
+
+__END__
+
+=head1 SYNOPSIS
+
+  # Without argument, configuration is read from ~/.booklog2amazon.yaml
+  booklog2amazon
+  
+  # Override configuration
+  booklog2amazon myconfig.yaml
+
+=head1 DESCRIPTION
+
+This script reads from status in L<Booklog|http://booklog.jp/> and update Amazon recommended configuration according to the status.
+
+~/.booklog2amazon.yaml is a YAML file as the followings:
+
+  amazon:
+    email: your_email@example.com
+    password: your_password
+  booklog:
+    account: your_account
+
+This includes sensitive information so you should set appropriate permissions.
+After the first execution, C<last_sync> is added to the file. So, write permission is also necessary.
+
+=head1 CAVEATS
+
+=for :list
+* Currently, all items you registered to booklog are considered that you owned them even though their status is 'want read'.
+* Currently, it is assumed that rank is set at read time.
+* This script stores the last executed time into configuration file and skips the items registered/read before. So, if you set read time of some items prior to the last executed time, they are skipped.
+
+=cut
