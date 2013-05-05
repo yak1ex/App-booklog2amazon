@@ -101,7 +101,7 @@ __END__
 
 =head1 DESCRIPTION
 
-This is an implementation module to update amazon recommended according to booklog status
+This is an implementation module for a script to update amazon recommended according to booklog status
 
 =method C<run(@arg)>
 
