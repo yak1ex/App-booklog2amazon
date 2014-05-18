@@ -15,6 +15,8 @@ use Time::Local;
 use Net::Amazon::Recommended;
 use WebService::Booklog;
 
+use constant MAX_BOOKS_IN_PAGE => 25;
+
 sub _conv_time
 {
 	my ($time) = @_;
@@ -53,7 +55,7 @@ sub run
 			$candidate{$item->{id}} = $item->{rank};
 		}
 		++$page;
-	} while($dat->{pager}{maxpage} != $dat->{pager}{page} && _conv_time($dat->{books}[-1]{create_on}) >= $last_sync);
+	} while(scalar(@{$dat->{books}}) == MAX_BOOKS_IN_PAGE && _conv_time($dat->{books}[-1]{create_on}) >= $last_sync);
 	# Loop for read date
 	if($last_sync) { # For the initial time, all items are checked by the previous loop section
 		$page = 1;
@@ -68,7 +70,7 @@ sub run
 				$candidate{$item->{id}} = $item->{rank};
 			}
 			++$page;
-		} while($dat->{pager}{maxpage} != $dat->{pager}{page} && defined $dat->{books}[-1]{read_at} && _conv_time($dat->{books}[-1]{read_at}) >= $last_sync);
+		} while(scalar(@{$dat->{books}}) == MAX_BOOKS_IN_PAGE && defined $dat->{books}[-1]{read_at} && _conv_time($dat->{books}[-1]{read_at}) >= $last_sync);
 	}
 
 	print scalar(keys %candidate), " candidate items found\n";
