@@ -18,13 +18,13 @@ This is an implementation module for a script to update amazon recommended accor
 
 ## `run(@arg)`
 
-Process arguments. Typically, `@ARGV` is passed. For argument details, see [booklog2amazon](http://search.cpan.org/perldoc?booklog2amazon).
+Process arguments. Typically, `@ARGV` is passed. For argument details, see [booklog2amazon](https://metacpan.org/pod/booklog2amazon).
 
 # SEE ALSO
 
-- [booklog2amazon](http://search.cpan.org/perldoc?booklog2amazon)
-- [Net::Amazon::Recommended](http://search.cpan.org/perldoc?Net::Amazon::Recommended)
-- [WebService::Booklog](http://search.cpan.org/perldoc?WebService::Booklog)
+- [booklog2amazon](https://metacpan.org/pod/booklog2amazon)
+- [Net::Amazon::Recommended](https://metacpan.org/pod/Net::Amazon::Recommended)
+- [WebService::Booklog](https://metacpan.org/pod/WebService::Booklog)
 
 # AUTHOR
 
